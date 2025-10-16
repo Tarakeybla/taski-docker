@@ -148,6 +148,11 @@ jobs:
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           source: "./docker-compose.production.yml"
           target: "taski"
+          tar_exec: "/usr/bin/tar"     # зафиксируй путь
+          tar_tmp_path: "/tmp"
+          overwrite: true
+          strip_components: 0
+          debug: true  
       - name: Executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
